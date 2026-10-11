@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Eksplorasi TextStyle'),
+          title: const Text('Eksplorasi Layout & RichText'),
           backgroundColor: Colors.indigo,
         ),
         body: Padding(
@@ -21,39 +21,51 @@ class MyApp extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Variasi FontWeight dan Style
-              const Text(
-                'Teks Cetak Tebal (Bold)',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.indigo,
+              // Alignment Teks di dalam Container
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.indigo),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Text(
+                  'Teks Rata Tengah (Center Alignment)',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16),
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 15),
 
-              // Spacing (jarak antar huruf)
+              // Handling Overflow Teks Panjan
               const Text(
-                'Teks dengan Letter Spacing',
-                style: TextStyle(
-                  fontSize: 18,
-                  letterSpacing: 4,
-                  fontStyle: FontStyle.italic,
-                ),
+                'Pengembangan aplikasi mobile menggunakan Flutter dan Dart sangat menyenangkan karena performanya tinggi dan mendukung multiplatform.',
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 15),
 
-              // Dekorasi Garis & Bayangan (Shadow)
-              const Text(
-                'Teks dengan Garis Bawah & Shadow',
-                style: TextStyle(
-                  fontSize: 18,
-                  decoration: TextDecoration.underline,
-                  shadows: [
-                    Shadow(
-                      offset: Offset(2, 2),
-                      blurRadius: 4,
-                      color: Colors.grey,
+              // Penggunaan RichText dan TextSpan
+              RichText(
+                text: const TextSpan(
+                  style: TextStyle(fontSize: 18, color: Colors.black),
+                  children: [
+                    TextSpan(text: 'Saya sedang belajar '),
+                    TextSpan(
+                      text: 'Flutter',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue,
+                      ),
+                    ),
+                    TextSpan(text: ' dan '),
+                    TextSpan(
+                      text: 'Dart',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green,
+                      ),
                     ),
                   ],
                 ),
